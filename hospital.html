@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="project.css">
+    <script src="https://kit.fontawesome.com/cf5834d24e.js" crossorigin="anonymous"></script>
+<script src="hospital.js"></script>
+</head>
+
+<body>
+    <div id="sectionUser">
+        <div class="home-header">
+            <h1 class="header-heading">Hospital Online Appointment Platform</h1>
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a class="navbar-brand" href="#">
+                    <img src="" class="navbar-image" alt="" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon ic"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                    <div class="navbar-nav m-auto p-0">
+                        <a class="nav-link active" href="#" onclick="Home()">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" href="#">Locations</a>
+                        <a class="nav-link active" href="#" onclick="onDoctorAvailability()">Find a Doctor</a>
+                        <a class="nav-link active" href="#" onclick="onBookingSchedule()">Request Appointment</a>
+                        <a class="nav-link active" href="#" onclick="OnPatientGateWay()">Patient Gateway</a>
+                    </div>
+                </div>
+            </nav>
+            <select id="witsec-language" class="form-control">
+                <option value="ar">Arabic</option>
+                <option value="as">Assamese</option>
+                <option value="bn">Bengali (Bangla)</option>
+                <option value="bh">Bihari</option>
+                <option value="bi">Bislama</option>
+                <option value="bs">Bosnian</option>
+                <option value="br">Breton</option>
+                <option value="bg">Bulgarian</option>
+                <option value="my">Burmese</option>
+                <option value="ca">Catalan</option>
+                <option value="ny">Chichewa, Chewa, Nyanja</option>
+                <option value="zh">Chinese</option>
+                <option value="hr">Croatian</option>
+                <option value="cs">Czech</option>
+                <option value="da">Danish</option>
+                <option value="dv">Divehi, Dhivehi, Maldivian</option>
+                <option value="nl">Dutch</option>
+                <option value="dz">Dzongkha</option>
+                <option value="en">English</option>
+                <option value="eo">Esperanto</option>
+                <option value="et">Estonian</option>
+                <option value="fi">Finnish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="el">Greek</option>
+                <option value="gu">Gujarati</option>
+                <option value="hi">Hindi</option>
+                <option value="is">Icelandic</option>
+                <option value="id">Indonesian</option>
+                <option value="ga">Irish</option>
+                <option value="it">Italian</option>
+                <option value="ja">Japanese</option>
+                <option value="kn">Kannada</option>
+                <option value="ks">Kashmiri</option>
+                <option value="ko">Korean</option>
+                <option value="ml">Malayalam</option>
+                <option value="mr">Marathi</option>
+                <option value="mn">Mongolian</option>
+                <option value="ne">Nepali</option>
+                <option value="or">Oriya</option>
+                <option value="fa">Persian (Farsi)</option>
+                <option value="pt">Portuguese</option>
+                <option value="pa">Punjabi (Eastern)</option>
+                <option value="ro">Romanian</option>
+                <option value="ru">Russian</option>
+                <option value="sa">Sanskrit</option>
+                <option value="sr">Serbian</option>
+                <option value="sd">Sindhi</option>
+                <option value="es">Spanish</option>
+                <option value="ta">Tamil</option>
+                <option value="te">Telugu</option>
+                <option value="th">Thai</option>
+                <option value="bo">Tibetan</option>
+                <option value="ti">Tigrinya</option>
+                <option value="tr">Turkish</option>
+                <option value="tk">Turkmen</option>
+                <option value="uk">Ukrainian</option>
+                <option value="ur">Urdu</option>
+                <option value="vi">Vietnamese</option>
+            </select>
+        </div>
+        <div class="home-header-2">
+            <a style="color:white;">
+                <h1 class="header-heading-2" id="doctoravailability" onclick="onDoctorAvailability()">Doctor Availability</h1>
+            </a>
+            <a>
+                <h1 class="header-heading-2" id="bookingschedule" onclick="onBookingSchedule()">Booking Schedule</h1>
+            </a>
+            <a>
+                <h1 class="header-heading-2" id="reschedule" onclick="onReschedulePage()">Rescheduling Appointment</h1>
+            </a>
+        </div>
+        <div class="home-body" id="homeBody">
+            <div class="home-body-backimage">
+                <div class="home-body-card">
+                    <h1>Hospital XYZ</h1>
+                    <p>Helping our patients and their families get back what matters more</p>
+                    <a href="" style="color:darkblue;">About Hospitals XYZ</a>
+                    <div class="cards text-center">
+                        <div class="card-1">
+                            <h1 class="home-card-heading">What can we help with ?</h1>
+                            <div class="subelement">
+                                <h1 class="subheading-card" onclick=onDoctorAvailability()>Find a doctor</h1>
+                                <i class="fa-solid fa-caret-right"></i>
+                            </div>
+                            <div class="subelement">
+                                <h1 class="subheading-card">Request Appointment</h1>
+                                <i class="fa-solid fa-caret-right"></i>
+                            </div>
+                            <div class="subelement">
+                                <h1 class="subheading-card">Locations</h1>
+                                <i class="fa-solid fa-caret-right"></i>
+                            </div>
+                            <div class="subelement">
+                                <h1 class="subheading-card">Services</h1>
+                                <i class="fa-solid fa-caret-right"></i>
+                            </div>
+                            <p style="text-align:left;color:blue;">Insurance,Billing and Payment</p>
+                            <p style="text-align:left;color:blue;">Cost Estimates</p>
+                            <p style="text-align:left;color:blue;">Patient Gateways</p>
+                            <p style="text-align:left;color:blue;">Clinical Trails</p>
+                            <p style="text-align:left;color:blue;">International Patterns</p>
+                        </div>
+                        <div class="card-2">
+                            <img src="https://img.freepik.com/free-photo/medium-shot-scientists-posing-together_23-2148969982.jpg?w=150">
+                            <h1 class="subheading-card">Hospital XYZ is name as Indian News Best Hospital</h1>
+                            <p>Hospital XYZ is recognized as a top hospital in nation by Indian News and Report for 2023-2024</p>
+                            <a href="" class="align-para-card2">Learn more about Ratings</a>
+                        </div>
+                        <div class="card-3">
+                            <img src="https://www.create-health.com.au/uploads/117/35/blog-what-is-endometriosis.jpg?" class="card3-image">
+                            <h1 class="subheading-card">Endometriosis Care:Facing the Missed Disease</h1>
+                            <p>Severe period pains could be a sign of endomitroisis - a lifelong condition that happens when tissue similar to those in the uterine lining grows in other places.Dr Louis Perkins,MD,JD,gynecological surgeon,shares more about this condition and How to treat it</p>
+                            <a href="" style="color:darkblue;">Learn more about Endometriosis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="background-color:#034694;color:white; padding-right:5vw;padding-left:5vw;padding-top:5vh;padding-bottom:5vh;d-flex:flex;flex-direction:column;align-items:center;">
+                <h1 class="text-center body-header" style="text-decoration:underline">CENTERS FOR EXCELLENCE</h1>
+                <ul style="list-style-type:none;display:flex;justify-content:center; flex-wrap:wrap">
+                    <li class="list-type"><a href="#" style="color:white">Cancer Care</a></li>
+                    <li class="list-type"><a href="#" style="color:white">Neuroscience</a></li>
+                    <li class="list-type"><a href="#" style="color:white">Heart and Vascular</a></li>
+                    <li class="list-type"><a href="#" style="color:white">Lung Care</a></li>
+                    <li class="list-type"><a href="#" style="color:white">Orthopedics</a></li>
+                    <li class="list-type"><a href="#" style="color:white">Primary Care</a></li>
+                    <li class="list-type"><a href="#" style="color:white">Women's Health</a></li>
+                </ul>
+                <button style="background-color:darkblue;color:white;padding:15px;">ALL DEPARTMENTS & SERVICES</button>
+
+            </div>
+        </div>
+        <div id="doctoravailpage">
+            <div class="dab">
+                <div class="doctoravail-body-card">
+                    <h1>Find a Doctor</h1>
+                    <p>Find a right doctor for you at any Hospital XYZ Locations and affiliates</p>
+
+                    <div style="display:flex;">
+                        <div style="display:flex;flex-direction:column;">
+                            <label htmlFor="search1" class="labelText">Search For a Condition or Procedure or Doctor Name</label>
+                            <input type="search" id="search1" />
+                        </div>
+                        <p style="margin:5px;"> OR </p>
+                        <div style="display:flex;flex-direction:column;">
+                            <label htmlFor="search2" class="labelText">Search By Address or City or Pincode within 5km</label>
+                            <input type="search" id="search2" />
+                        </div>
+                        <div class="col-12 d-none mt-5" id="spinner">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="spinner-border" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex">
+                        <div class="left order" style="display:flex flex-direction:column">
+                            <div class="sortBy" style="width:200px;">
+                                <h1 class="doc-appoint-heading">Search by</h1>
+                                <div class="subelement ">
+                                    <h1 class="subheading-card pr-3">Name</h1>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                                <div class="subelement">
+                                    <h1 class="subheading-card">Speciality</h1>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                                <div class="subelement">
+                                    <h1 class="subheading-card">Interest</h1>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                                <div class="subelement">
+                                    <h1 class="subheading-card">Location</h1>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                                <div class="subelement">
+                                    <h1 class="subheading-card">Language</h1>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                                <div class="subelement">
+                                    <h1 class="subheading-card">Gender</h1>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                            </div>
+                            <div class="subelement " style="background-color:gold;">
+                                <h1 class="subheading-card pr-3" style="color:black;">Request Appointment</h1>
+                                <i class="fa-solid fa-caret-right"></i>
+                            </div>
+                            <div class="mt-3 ml-2 p-2" style="background-color:white;">
+                                <p>New Patients Please Call Toll Free Number</p>
+                                <p style="color:blue;">1234567890</p>
+                                <p>Monday to Saturday</p>
+                                <p>9 A.M to 4 P.M IST</p>
+                            </div>
+                        </div>
+                        <div class="row result-doctors resultDoctors" id="resultDoctors"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bookingschedulepage" class="p-3">
+            <p>Request Appointment| <span style="color:blue;">Call 9087654321</span></p>
+            <div style="display:flex;">
+                <div style="width:22vw" class="pr-5">
+                    <h1>Patients</h1>
+                    <hr class="hr-line" />
+                    <p><a href="#">Finding a Doctor</a></p>
+                    <p><a href="#">New Patient Registration</a></p>
+                    <p><a href="#" style="color:black;" id="request" onclick="onRequest()">Request Appointment</a></p>
+                    <p><a href="#">Insurance Accepted, Billing And Payment </a></p>
+                    <p><a href="#">Preparing for your new Appointment</a></p>
+                    <p><a href="#">Laboratory and Diagnosis Test</a></p>
+                    <p><a href="#">Forms and Documents</a></p>
+                    <p><a href="#">Patient Rights and Expectations</a></p>
+                    <hr class="hr-line" />
+                    <p><a href="#" onclick="viewSchedule()">View Appointment Schedule</a></p>
+                    <hr class="hr-line" />
+                    <p onclick="OnPatientGateWay()"><a href="#">Patient gateway</a></p>
+                </div>
+                <div id="requestschedule">
+                    <h1>Request Appointments</h1>
+                    <hr class="hr-line" />
+                    <p>If you are new to XYZ hospital or are selecting a new physician,use the form below(or call toll-free 9087654321,Monday-Saturday,9:00am -4:00pm,IST) to request an appointment.Our trained Coordinators provde personalized service in English or your Native Language and will respond within a few minutes.</p>
+                    <h1 class="p-2" style="font-size:20px;background-color:gold;">Appointment Form (Fields Marked with asterik(*) are required.)</h1>
+                    <form id="myForm" class="p-3" style="background-color:#FFFFF0;font-weight:bold;">
+                        <h1 style="font-size:20px;font-weight:bold;">Patient Information</h1>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                                <label for="firstname">First Name <span style="color:red">*</span></label>
+                                <input type="text" id="firstname" />
+                                <p id="firstnameErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="lastname">Last Name <span style="color:red">*</span></label>
+                                <input type="text" id="lastname" />
+                                <p id="lastnameErrMsg" class="error-message"></p>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                                <label for="phonenumber">Phone Number<span style="color:red">*</span></label>
+                                <input type="text" id="phonenumber" />
+                                <p id="phonenumberErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="email">Email Id</label>
+                                <input type="text" id="email" />
+                                <p id="emailErrMsg" class="error-message"></p>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                                <label for="dob">Date of Birth<span style="color:red">*</span></label>
+                                <input type="date" id="dob" placeholder="DD/MM/YYYY" />
+                                <p id="dobErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="departmentcode">Department to Schedule with <span style="color:red">*</span></label>
+                                <select id="departmentcode">
+                                    <option value="">Select Department</option>
+                                    <option value="MED">Medicine</option>
+                                    <option value="SURG">Surgery</option>
+                                    <option value="PED">Pediatrics</option>
+                                    <option value="OBGYN">Obstetrics and Gynecology</option>
+                                    <option value="CARD">Cardiology</option>
+                                    <option value="ONC">Oncology</option>
+                                    <option value="NEURO">Neurology</option>
+                                    <option value="ORTH">Orthopedics</option>
+                                    <option value="ENT">Ear, Nose and Throat</option>
+                                    <option value="DERM">Dermatology</option>
+                                    <option value="OPHTH">Ophthalmology</option>
+                                    <option value="PSYCH">Psychiatry</option>
+                                </select>
+                                <p id="departmentcodeErrMsg" class="error-message"></p>
+                            </div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;width:80vw;padding-left:5px;" class="mb-3">
+                            <label>Specific Symtomps <span style="color:red">*</span></label>
+                            <select name="symptoms" style="height:5vh;">
+                                <option value="" disabled selected>Select Symptom(s)</option>
+                                <option value="fever">Fever</option>
+                                <option value="cough">Cough</option>
+                                <option value="sore throat">Sore throat</option>
+                                <option value="headache">Headache</option>
+                                <option value="body aches">Body aches</option>
+                                <option value="fatigue">Fatigue</option>
+                                <option value="nausea">Nausea</option>
+                                <option value="vomiting">Vomiting</option>
+                                <option value="diarrhea">Diarrhea</option>
+                                <option value="rash">Rash</option>
+                                <option value="shortness of breath">Shortness of breath</option>
+                                <option value="chest pain">Chest pain</option>
+                                <option value="abdominal pain">Abdominal pain</option>
+                                <option value="confusion">Confusion</option>
+                                <option value="stiff neck">Stiff neck</option>
+                                <option value="seizure">Seizure</option>
+                                <option value="loss of consciousness">Loss of consciousness</option>
+                            </select>
+                        </div>
+                        <div style="display:flex;flex-direction:column;width:80vw;padding-left:5px;" class="mb-3">
+                            <label for="departmentcode">Any Specific Reqirements for Patients <span style="color:red">*</span></label>
+                            <select name="specific_requirements" style="height:5vh;">
+                                <option value="" disabled selected>Select Specific Requirements</option>
+                                <option value="wheelchair_access">Wheelchair access</option>
+                                <option value="sign_language_interpreter">Sign language interpreter</option>
+                                <option value="translator">Translator</option>
+                                <option value="vegetarian_meal">Vegetarian meal</option>
+                                <option value="halal_meal">Halal meal</option>
+                                <option value="kosher_meal">Kosher meal</option>
+                                <option value="other">Other</option>
+                            </select>
+
+                        </div>
+                        <div style="display:flex;flex-direction:column;width:80vw;padding-left:5px;" class="mb-3">
+                            <label for="departmentcode">Persons Occupation or Qualification<span style="color:red">*</span></label>
+                            <select name="occupation_or_qualification" style="height:5vh;">
+                                <option value="" disabled selected>Select Occupation or Qualification</option>
+                                <optgroup label="Occupations">
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Engineer">Engineer</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Lawyer">Lawyer</option>
+                                    <option value="Accountant">Accountant</option>
+                                    <option value="Salesperson">Salesperson</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Nurse">Nurse</option>
+                                    <option value="Police Officer">Police Officer</option>
+                                    <option value="Firefighter">Firefighter</option>
+                                    <option value="Other">Other</option>
+                                </optgroup>
+                                <optgroup label="Qualifications">
+                                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                    <option value="Master's Degree">Master's Degree</option>
+                                    <option value="Doctorate Degree">Doctorate Degree</option>
+                                    <option value="Professional Certification">Professional Certification</option>
+                                    <option value="Other">Other</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div style="display:flex">
+                            <input type="checkbox" style="padding-left:5px; height:50px; " id="CheckboxId" />
+                            <p style="padding-left:5px; font-weight:normal;">The information provided by you on this site is for general purpose only.Your use of this site and your reliance in providing any information on this site is solely at your own risk</p>
+                        </div>
+                        <div class="form-button">
+                            <button class="btn btn-primary" style="align-self:end;">Request Appointment</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="viewappointmentlist">
+                    <h1>Patient Allotment Schedule</h1>
+                    <div class="mb-3 form-start">
+                        <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                            <label for="dname">Enter Name of Doctor/Location</label>
+                            <input type="search" id="dname" />
+                        </div>
+                        <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                            <label for="doa">Date Of Appointment</label>
+                            <input type="date" id="doa" />
+                            <p id="lastnameErrMsg" class="error-message"></p>
+                        </div>
+                    </div>
+                    <hr class="hr-line" />
+                    <ul style="list-style-type:none;display:flex; justify-content:space-between;background-color:darkblue;color:white;padding:5px;">
+                        <li>Serial No.</li>
+                        <li>Patient Name</li>
+                        <li>Time Slot</li>
+                        <li>Expected Duration</li>
+                    </ul>
+                    <ul style="list-style-type:none;padding:5px;width:60vw;">
+                        <div style="overflow-y:scroll;">
+                            <li style="display:flex; justify-content:space-between; background-color:#FFFFF0;padding:5px;">
+                                <p>1</p>
+                                <p>Ram Babu</p>
+                                <p>9:30-9:50</p>
+                                <p>20min</p>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; background-color:grey;padding:5px;">
+                                <p>2</p>
+                                <p>Ram Babu</p>
+                                <p>9:30-9:50</p>
+                                <p>20min</p>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; background-color:#FFFFF0;padding:5px;">
+                                <p>3</p>
+                                <p>Ram Babu</p>
+                                <p>9:30-9:50</p>
+                                <p>20min</p>
+                            </li>
+                            <li style="display:flex; justify-content:space-between; background-color:grey;padding:5px;">
+                                <p>4</p>
+                                <p>Ram Babu</p>
+                                <p>9:30-9:50</p>
+                                <p>20min</p>
+                            </li>
+                        </div>
+                        <p style="text-align:center;background-color:#FFFFF0;height:40px;">*UnbookedSlots</p>
+                        <div style="display:flex;justify-content:flex-end;">
+                            <button style="background-color:gold;" onclick="onReschedulePage()">
+                                <div style="display:flex;justify-content:space-between;padding:5px;">
+                                    <p style="font-size:20px;">Reschedule</p>
+                                    <i class="fa-solid fa-caret-right"></i>
+                                </div>
+                            </button>
+                            <button style="background-color:darkblue;" onclick="onRequest()">
+                                <div style="display:flex;justify-content:space-between;padding:5px;">
+                                    <p style="font-size:20px;color:white;">Register a Slot</p>
+                                    <i class="fa-solid fa-caret-right" style="color:white;"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+        <div id="reschedulepage">
+            <div style="display:flex;">
+                <div style="width:22vw" class="pr-5">
+                    <h1>Patients</h1>
+                    <hr class="hr-line" />
+                    <p><a href="#">Finding a Doctor</a></p>
+                    <p><a href="#">New Patient Registration</a></p>
+                    <p><a href="#" id="request" onclick="onRequest()">Request Appointment</a></p>
+                    <p><a href="#">Insurance Accepted, Billing And Payment </a></p>
+                    <p><a href="#">Preparing for your new Appointment</a></p>
+                    <p><a href="#">Laboratory and Diagnosis Test</a></p>
+                    <p><a href="#">Forms and Documents</a></p>
+                    <p><a href="#">Patient Rights and Expectations</a></p>
+                    <hr class="hr-line" />
+                    <p><a href="#" onclick="viewSchedule()">View Appointment Schedule</a></p>
+                    <hr class="hr-line" />
+                    <p onclick="OnPatientGateWay()"><a href="#">Patient gateway</a></p>
+                </div>
+                <div>
+                    <h1>Request Rescheduling</h1>
+                    <hr class="hr-line" />
+                    <p>If you are new to XYZ hospital or are selecting a new physician,use the form below(or call toll-free 9087654321,Monday-Saturday,9:00am -4:00pm,IST) to request an appointment.Our trained Coordinators provde personalized service in English or your Native Language and will respond within a few minutes.</p>
+                    <h1 class="p-2" style="font-size:20px;background-color:gold;">Appointment Form (Fields Marked with asterik(*) are required.)</h1>
+                    <form id="myForm" class="p-3" style="background-color:#FFFFF0;font-weight:bold;">
+                        <h1 style="font-size:20px;font-weight:bold;">Patient Information</h1>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                                <label for="firstname">Patients First Name <span style="color:red">*</span></label>
+                                <input type="text" id="firstname" />
+                                <p id="firstnameErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="lastname">Patients Last Name <span style="color:red">*</span></label>
+                                <input type="text" id="lastname" />
+                                <p id="lastnameErrMsg" class="error-message"></p>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                                <label for="phonenumber">Phone Number<span style="color:red">*</span></label>
+                                <input type="text" id="phonenumber" />
+                                <p id="phonenumberErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-left:5px;">
+                                <label for="dob">Date of Birth<span style="color:red">*</span></label>
+                                <input type="date" id="dob" placeholder="DD/MM/YYYY" />
+                                <p id="dobErrMsg" class="error-message"></p>
+                            </div>
+
+                        </div>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="email">Doctor Appointed</label>
+                                <input type="text" id="email" />
+                                <p id="emailErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="pdt">Prior Date and Time <span style="color:red">*</span></label>
+                                <input type="datetime-local" id="pdt" />
+                                <p id="departmentcodeErrMsg" class="error-message"></p>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-start">
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="email">Change the Doctor appointed<span style="color:red">*</span></label>
+                                <input type="text" id="email" />
+                                <p id="emailErrMsg" class="error-message"></p>
+                            </div>
+                            <div style="display:flex;flex-direction:column;width:30vw;padding-right:5px;">
+                                <label for="pdt">change appointed Date and Time <span style="color:red">*</span></label>
+                                <input type="datetime-local" id="pdt" />
+                                <p id="departmentcodeErrMsg" class="error-message"></p>
+                            </div>
+                        </div>
+                        <div style="display:flex">
+                            <input type="checkbox" style="padding-left:5px; height:50px; " id="CheckboxId" />
+                            <p style="padding-left:5px; font-weight:normal;">The information provided by you on this site is for general purpose only.Your use of this site and your reliance in providing any information on this site is solely at your own risk</p>
+                        </div>
+                        <div class="form-button">
+                            <button class="btn btn-primary" style="align-self:end;">Reschedule Appointment</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+        <div id="patientgateway" class="patient-gateway">
+            <div style="display:flex;flex-direction:column;align-self:center;background-color:lightgrey;width:80vw">
+                <div style=" display: flex;flex-direction: row;justify-content: space-between;">
+                    <div style="display:flex; width:30vw;" class="m-3">
+                        <div>
+                            <img src="https://www.pinclipart.com/picdir/middle/578-5782245_3d-chat-bubbles-vector-drawing-png-chat-icon.png" style="height:100px;width:100px;background-color:transparent;" />
+                        </div>
+                        <div>
+                            <h1 style="font-size:22px;">Communicate with your doctor</h1>
+                            <p>Get answers to your medical questions from comfort of your home</p>
+                        </div>
+                    </div>
+                    <div style="display:flex; width:30vw;" class="m-3">
+                        <div>
+                            <img src="https://cdn0.iconfinder.com/data/icons/medical-354/64/Lab-results-test-analysis-diagnostic-1024.png" style="height:100px;width:100px" />
+                        </div>
+                        <div>
+                            <h1 style="font-size:22px;">Access your test results</h1>
+                            <p>Check lab results,reports and letters from providers</p>
+                        </div>
+                    </div>
+                </div>
+                <div style=" display: flex;flex-direction: row;justify-content: space-between;">
+                    <div style="display:flex; width:30vw;" class="m-3">
+                        <div>
+                            <img src="https://icon-library.com/images/prescription-icon/prescription-icon-18.jpg" style="height:100px;width:100px" />
+                        </div>
+                        <div>
+                            <h1 style="font-size:22px;">Renew Prescriptions</h1>
+                            <p>Review your prescriptions and request renewals</p>
+                        </div>
+                    </div>
+                    <div style="display:flex; width:30vw;" class="m-3">
+                        <div>
+                            <img src="https://thumbs.dreamstime.com/b/reminder-doctor-appointment-concept-d-rendering-isolated-white-background-reminder-doctor-appointment-concept-d-rendering-147840345.jpg" style="height:100px;width:100px" />
+                        </div>
+                        <div>
+                            <h1 style="font-size:22px;">Manage your Appointments</h1>
+                            <p>View and schedule your appointments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hospital-footer-section mt-5 pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="text-center text-md-left">
+                            <img src="https://res.cloudinary.com/dmnwhjps3/image/upload/v1694544330/Hospital_logo_medical_health_-_Made_with_PosterMyWall_fyqpcw.png" class="hospital-logo" />
+                            <h1 class="hospital-logo-section-heading mb-3">Hospital XYZ</h1>
+                            <div class="d-flex flex-row justify-content-center justify-content-md-start mb-3">
+                                <div class="hospital-footer-section-icon-container">
+                                    <i class="fa-brands fa-facebook icon"></i>
+                                </div>
+                                <div class="hospital-footer-section-icon-container">
+                                    <i class="fa-brands fa-x-twitter icon"></i>
+                                </div>
+                                <div class="hospital-footer-section-icon-container">
+                                    <i class="fa-brands fa-youtube icon"></i>
+                                </div>
+                                <div class="hospital-footer-section-icon-container">
+                                    <i class="fa-brands fa-instagram icon"></i>
+                                </div>
+                                <div class="hospital-footer-section-icon-container">
+                                    <i class="fa-brands fa-linkedin icon"></i>
+                                </div>
+                            </div>
+                            <p class="hospital-footer-section-address">
+                                Sector,Colony,City,State- PinCode
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 mt-3">
+                        <ul class="hospital-footer-section-list">
+                            <h1 class="hospital-footer-section-heading mb-3">Hospital XYZ</h1>
+                            <p class="hospital-footer-section-address">
+                                Sector,Colony,City,State- PinCode
+                            </p>
+                            <li style="color:blue;" class="hospital-footer-section-list-item">1234567890|Contact Us</li>
+                            <li class="hospital-footer-section-list-item">General Information:<span class="blue">1234567890</span></li>
+                            <li class="hospital-footer-section-list-item">Request Appointment:<span class="blue">9087654321</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-lg-3 mt-3">
+                        <ul class="hospital-footer-section-list">
+                            <h1 class="hospital-footer-section-heading mb-3">Centers for Excellence</h1>
+                            <li style="color:blue;" class="hospital-footer-section-list-item blue">Cancer Center</li>
+                            <li class="hospital-footer-section-list-item blue">Heart And Vascular Center</li>
+                            <li class="hospital-footer-section-list-item blue">Lung Center</li>
+                            <li class="hospital-footer-section-list-item blue">NeuroScience Center</li>
+                            <li class="hospital-footer-section-list-item blue">Orthopedic & Arthiritis Center</li>
+                            <li class="hospital-footer-section-list-item blue">Primary Care Center</li>
+                            <li class="hospital-footer-section-list-item blue">Women Health Care</li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-lg-3 mt-3">
+                        <ul class="hospital-footer-section-list">
+                            <h1 class="hospital-footer-section-heading mb-3">Quick Links</h1>
+                            <li class="hospital-footer-section-list-item"><a href="">Emergency Scheduling</a></li>
+                            <li class="hospital-footer-section-list-item"><a href="">Health Information</a></li>
+                            <li class="hospital-footer-section-list-item"><a href="">Symptom Severity</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="hr-line" />
+                <div class="text-center copyright-box">
+                    <i class="fa fa-copyright icon" aria-hidden="true"></i>
+                    <span class="hospital-footer-section-copyright">
+                        2023 Hospital XYZ
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
