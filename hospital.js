@@ -1,3 +1,4 @@
+import './hospital.css'
 let availabledoctorId = document.getElementById("doctoravailability");
 let bookingscheduleId = document.getElementById("bookingschedule");
 let rescheduleId = document.getElementById("reschedule");
