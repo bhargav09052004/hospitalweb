@@ -1,4 +1,7 @@
-import './hospital.css'
+let link = document.createElement('link');
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = 'hospital.css';
 let availabledoctorId = document.getElementById("doctoravailability");
 let bookingscheduleId = document.getElementById("bookingschedule");
 let rescheduleId = document.getElementById("reschedule");
