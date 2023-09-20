@@ -339,10 +339,11 @@
     font-weight: bold;
     margin-bottom: 8px;
 }
-
+    
 .display {
-    display: none;
+    visibility:hidden;
 }
+
 
 .doctor-specilization {
     font-family: "Roboto";
